@@ -23,7 +23,7 @@ module Hatebu
         puts data.description
         puts
 
-        @history.data[data.link] =  if @history
+        @history.data[data.link] = 1 if @history
       end
     end
     
