@@ -1,5 +1,6 @@
 # Hatebu DSL functions.
 require "hatebu/hatebu"
+require "hatebu/json_file"
 
 module Hatebu
   module DSL
@@ -21,6 +22,8 @@ module Hatebu
         print data.l_astr, " ", data.b_astr, "\n"
         puts data.description
         puts
+
+        @history.data[data.link] =  if @history
       end
     end
     
