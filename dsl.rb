@@ -3,8 +3,15 @@ require "hatebu/hatebu"
 
 module Hatebu
   module DSL
+    def history(filename, &block)
+      @history = JsonFile.new(filename)
+      block.call
+      @history.save
+      @history = nil
+    end
+    
     def category(name)
-      Hatebu.new(name).items
+      get_unviewed(Hatebu.new(name).items)
     end
 
     def show(data)
@@ -14,6 +21,16 @@ module Hatebu
         print data.l_astr, " ", data.b_astr, "\n"
         puts data.description
         puts
+      end
+    end
+    
+    private
+
+    def get_unviewed(items)
+      if @history
+        items.select { |e| !@history.data[e.link] }
+      else
+        items
       end
     end
   end
