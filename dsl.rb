@@ -5,10 +5,14 @@ require "hatebu/json_file"
 module Hatebu
   module DSL
     def history(filename, &block)
-      @history = JsonFile.new(filename)
+      @history = JsonFile.new(filename) if filename
+
       block.call
-      @history.save
-      @history = nil
+
+      if @history
+        @history.save
+        @history = nil
+      end
     end
     
     def category(name)
