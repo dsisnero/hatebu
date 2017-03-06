@@ -15,6 +15,10 @@ module Hatebu
       get_unviewed(Hatebu.category(name).items)
     end
 
+    def tag(query, opt = {safe: "on"})
+      get_unviewed(Hatebu.tag(name, opt).items)
+    end
+
     def show(data)
       if data.is_a? Array
         data.each { |e| show e }

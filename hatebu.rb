@@ -18,7 +18,13 @@ module Hatebu
     }
 
     def self.category(name)
-      Hatebu.new(DATA[category])
+      Hatebu.new(DATA[name])
+    end
+
+    def self.tag(query, opt)
+      opt[:q] = query
+      opt[:mode] = "rss"
+      Hatebu.new("http://b.hatena.ne.jp/search/tag?#{URI.encode_www_form opt}")
     end
 
     def initialize(url)
