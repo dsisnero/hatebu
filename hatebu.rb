@@ -17,8 +17,12 @@ module Hatebu
       "動画" => "http://b.hatena.ne.jp/video.rss",
     }
 
-    def initialize(category = "総合")
-      @items = RSS.parse(DATA[category]).items.map { |e| Item.new e }
+    def self.category(name)
+      Hatebu.new(DATA[category])
+    end
+
+    def initialize(url)
+      @items = RSS.parse(url).items.map { |e| Item.new e }
     end
     
     class Item

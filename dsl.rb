@@ -12,7 +12,7 @@ module Hatebu
     end
     
     def category(name)
-      get_unviewed(Hatebu.new(name).items)
+      get_unviewed(Hatebu.category(name).items)
     end
 
     def show(data)
