@@ -16,7 +16,7 @@ module Hatebu
     end
 
     def tag(query, opt = {safe: "on"})
-      get_unviewed(Hatebu.tag(name, opt).items)
+      get_unviewed(Hatebu.tag(query, opt).items)
     end
 
     def show(data)
