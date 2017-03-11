@@ -2,6 +2,64 @@
 
 Hatebu DSL for RubyPico.
 
+- DSL: Use Ruby to efficiently collect bookmarks
+- History: Same URL is not displayed
+
+## Install
+
+1. Setup [RubyPicoGems](https://github.com/rubypico/RubyPicoGems)
+2. Run `github_downaload.rb`
+3. Download `hatebu`
+
+## Reference
+### history(filename, &block)
+Set hisotry file path. If `filename` is nil, do not use history.
+
+### show(data)
+Show bookmarks and record to history.
+
+```
+# Show TOP3 "総合" bookmarks
+show category("総合").take(3)
+```
+
+### category(name)
+Get category bookmarks. Category list is below. 
+
+When hisotry is set, do not return already showed URL.
+
+- "総合"
+- "世の中"
+- "政治と経済"
+- "暮らし"
+- "学び"
+- "テクノロジー"
+- "アニメとゲーム"
+- "エンタメ"
+- "おもしろ"
+- "動画"
+
+
+### tag(query, opt = {safe: "on"})
+Get bookmarks of the specified tag.
+
+```ruby
+# Get "ruby" tag bookmarks
+tag("ruby")
+
+# Get TOP3 "mruby" tag bookmarks
+tag("mrurby").take(3)
+```
+
+### title(query, opt = {safe: "on"})
+Get bookmarks of the specified title.
+
+### text(query, opt = {safe: "on"})
+Get bookmarks of the specified text.
+
+### search(kind, query, opt = {safe: "on"})
+kind is "tag" or "title" or "text".
+
 ## Sample
 
 ```ruby
